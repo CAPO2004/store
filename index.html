@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="متجر إلكتروني متعدد الأقسام - أفضل العروض والخصومات على المواد الغذائية والملابس والإلكترونيات">
+    <meta name="keywords" content="متجر, تسوق, عروض, خصومات, ملابس, إلكترونيات, موبايلات">
+    <title>المتجر الحديث | تسوق أفضل المنتجات</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="top-bar-contact">
+                <a href="tel:+201234567890"><i class="fas fa-phone"></i> +20 123 456 7890</a>
+                <a href="mailto:info@modernstore.com"><i class="fas fa-envelope"></i> info@modernstore.com</a>
+            </div>
+            <div class="top-bar-actions">
+                <button id="themeToggle" aria-label="تبديل الوضع">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <span><i class="fas fa-truck"></i> شحن مجاني للطلبات فوق 500 ج.م</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🛒</span>
+                <span class="logo-text">المتجر</span>
+            </a>
+
+            <nav class="nav" id="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link active">الرئيسية</a></li>
+                    <li class="nav-dropdown">
+                        <a href="products.html" class="nav-link">
+                            الأقسام <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="nav-dropdown-menu">
+                            <a href="products.html?category=food" class="dropdown-item">
+                                <i class="fas fa-utensils"></i> المواد الغذائية
+                            </a>
+                            <a href="products.html?category=consumer" class="dropdown-item">
+                                <i class="fas fa-spray-can"></i> المواد الاستهلاكية
+                            </a>
+                            <a href="products.html?category=clothes" class="dropdown-item">
+                                <i class="fas fa-tshirt"></i> ملابس جاهزة
+                            </a>
+                            <a href="products.html?category=watches" class="dropdown-item">
+                                <i class="fas fa-clock"></i> ساعات واكسسوارات
+                            </a>
+                            <a href="products.html?category=appliances" class="dropdown-item">
+                                <i class="fas fa-blender"></i> الأجهزة الكهربائية
+                            </a>
+                            <a href="products.html?category=mobiles" class="dropdown-item">
+                                <i class="fas fa-mobile-alt"></i> الموبايلات واللابات
+                            </a>
+                        </div>
+                    </li>
+                    <li><a href="products.html" class="nav-link">جميع المنتجات</a></li>
+                    <li><a href="offers.html" class="nav-link">العروض</a></li>
+                    <li><a href="about.html" class="nav-link">من نحن</a></li>
+                    <li><a href="contact.html" class="nav-link">اتصل بنا</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button class="search-toggle" id="searchToggle" aria-label="بحث">
+                    <i class="fas fa-search"></i>
+                </button>
+                <a href="wishlist.html" class="cart-btn" aria-label="المفضلة" data-tooltip="المفضلة">
+                    <i class="fas fa-heart"></i>
+                    <span class="cart-count" id="wishlistCount">0</span>
+                </a>
+                <a href="compare.html" class="cart-btn" aria-label="المقارنة" data-tooltip="المقارنة">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span class="cart-count" id="compareCount">0</span>
+                </a>
+                <button class="cart-btn" id="cartBtn" aria-label="سلة التسوق">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="menu-toggle" id="menuToggle" aria-label="القائمة">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Discount Banner -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <span class="hero-badge">
+                    <i class="fas fa-fire"></i>
+                    عروض نهاية العام
+                </span>
+                <h1 class="hero-title">
+                    خصومات تصل إلى
+                    <span class="highlight">50%</span>
+                </h1>
+                <p class="hero-desc">
+                    اكتشف أفضل المنتجات بأسعار لا تُقاوم! تسوق الآن من تشكيلة واسعة من المواد الغذائية، الملابس،
+                    الإلكترونيات والمزيد.
+                </p>
+                <div class="hero-btns">
+                    <a href="products.html" class="btn btn-primary btn-lg">
+                        <i class="fas fa-shopping-bag"></i>
+                        تسوق الآن
+                    </a>
+                    <a href="#categories" class="btn btn-secondary btn-lg">
+                        <i class="fas fa-th-large"></i>
+                        تصفح الأقسام
+                    </a>
+                </div>
+            </div>
+            <div class="hero-slider">
+                <div class="hero-slide">
+                    <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600" alt="عروض التسوق">
+                </div>
+                <div class="hero-floating hero-floating-1">
+                    <span class="badge badge-sale" style="font-size: 1.2rem; padding: 12px 20px;">-50%</span>
+                </div>
+                <div class="hero-floating hero-floating-2">
+                    <span class="badge badge-new" style="font-size: 1rem; padding: 10px 16px;">جديد</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,64 C480,150 960,-20 1440,64 L1440,120 L0,120 Z" fill="currentColor" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- Promo Slider -->
+    <section class="promo-slider">
+        <div class="container">
+            <div class="promo-track" id="promoTrack">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="section" id="categories">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">
+                    <i class="fas fa-th-large"></i>
+                    تصفح حسب القسم
+                </span>
+                <h2 class="section-title">أقسام المتجر</h2>
+                <p class="section-desc">اختر من بين 6 أقسام متنوعة تلبي جميع احتياجاتك</p>
+            </div>
+            <div class="categories-grid" id="categoriesGrid">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">
+                    <i class="fas fa-star"></i>
+                    الأكثر مبيعاً
+                </span>
+                <h2 class="section-title">منتجات مميزة</h2>
+                <p class="section-desc">اكتشف المنتجات الأكثر طلباً من عملائنا</p>
+            </div>
+            <div class="products-grid" id="featuredProducts">
+                <!-- Will be populated by JavaScript -->
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="products.html" class="btn btn-outline btn-lg">
+                    عرض جميع المنتجات
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div class="card" style="padding: 2rem; text-align: center;">
+                    <div
+                        style="width: 70px; height: 70px; background: rgba(99, 102, 241, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.75rem; color: var(--primary);">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h4 style="margin-bottom: 0.5rem;">شحن سريع</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">توصيل لجميع المحافظات خلال 2-5 أيام</p>
+                </div>
+                <div class="card" style="padding: 2rem; text-align: center;">
+                    <div
+                        style="width: 70px; height: 70px; background: rgba(34, 197, 94, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.75rem; color: var(--success);">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4 style="margin-bottom: 0.5rem;">ضمان الجودة</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">جميع منتجاتنا أصلية 100% مع ضمان</p>
+                </div>
+                <div class="card" style="padding: 2rem; text-align: center;">
+                    <div
+                        style="width: 70px; height: 70px; background: rgba(245, 158, 11, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.75rem; color: var(--accent);">
+                        <i class="fas fa-undo"></i>
+                    </div>
+                    <h4 style="margin-bottom: 0.5rem;">إرجاع سهل</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">سياسة إرجاع مرنة خلال 14 يوم</p>
+                </div>
+                <div class="card" style="padding: 2rem; text-align: center;">
+                    <div
+                        style="width: 70px; height: 70px; background: rgba(236, 72, 153, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.75rem; color: #ec4899;">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h4 style="margin-bottom: 0.5rem;">دعم متواصل</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">خدمة عملاء 24/7 للرد على استفساراتكم
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h3>اشترك في نشرتنا البريدية</h3>
+                    <p>احصل على أحدث العروض والخصومات مباشرة في بريدك</p>
+                </div>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="أدخل بريدك الإلكتروني" required>
+                    <button type="submit" class="btn">اشترك الآن</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-icon">🛒</span>
+                        <span class="logo-text">المتجر</span>
+                    </a>
+                    <p>متجرك الإلكتروني الأول للتسوق بأفضل الأسعار وأعلى جودة. نوفر لك كل ما تحتاجه في مكان واحد.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="products.html">جميع المنتجات</a></li>
+                        <li><a href="offers.html">العروض</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>الأقسام</h4>
+                    <ul>
+                        <li><a href="products.html?category=food">المواد الغذائية</a></li>
+                        <li><a href="products.html?category=consumer">المواد الاستهلاكية</a></li>
+                        <li><a href="products.html?category=clothes">ملابس جاهزة</a></li>
+                        <li><a href="products.html?category=watches">ساعات واكسسوارات</a></li>
+                        <li><a href="products.html?category=appliances">الأجهزة الكهربائية</a></li>
+                        <li><a href="products.html?category=mobiles">الموبايلات واللابات</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links footer-contact">
+                    <h4>تواصل معنا</h4>
+                    <ul>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>مصر - القاهرة - مدينة نصر</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+201234567890">+20 123 456 7890</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@modernstore.com">info@modernstore.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 المتجر الحديث. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-drawer-header">
+            <h3><i class="fas fa-shopping-bag"></i> سلة التسوق</h3>
+            <button class="cart-close" id="cartClose"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-drawer-body" id="cartItems">
+            <!-- Cart items will be loaded via JavaScript -->
+        </div>
+        <div class="cart-drawer-footer">
+            <div class="cart-total">
+                <span>الإجمالي:</span>
+                <span id="cartTotal">0 ج.م</span>
+            </div>
+            <a href="cart.html" class="btn btn-primary btn-block">عرض السلة</a>
+            <a href="checkout.html" class="btn btn-secondary btn-block" style="margin-top: 10px;">إتمام الشراء</a>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <button class="search-close" id="searchClose"><i class="fas fa-times"></i></button>
+        <div class="search-container">
+            <form class="search-form">
+                <input type="text" id="searchInput" placeholder="ابحث عن منتج...">
+            </form>
+        </div>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="العودة للأعلى">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

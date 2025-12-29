@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="تصفح جميع المنتجات في متجرنا الإلكتروني">
+    <title>جميع المنتجات | المتجر الحديث</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+
+    <style>
+        .page-header {
+            background: var(--gradient-hero);
+            padding: var(--space-3xl) 0;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: var(--space-sm);
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb span {
+            opacity: 0.7;
+        }
+
+        .products-section {
+            padding: var(--space-3xl) 0;
+        }
+
+        .products-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: var(--space-2xl);
+        }
+
+        /* Sidebar Filters */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .filter-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+
+        .filter-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .filter-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        .filter-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .filter-item:hover {
+            background: var(--bg-secondary);
+        }
+
+        .filter-item.active {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+        }
+
+        .filter-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+        }
+
+        .filter-count {
+            margin-right: auto;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Products Header */
+        .products-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--space-xl);
+            flex-wrap: wrap;
+            gap: var(--space-md);
+        }
+
+        .products-count {
+            color: var(--text-secondary);
+        }
+
+        .products-sort {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .sort-select {
+            padding: var(--space-sm) var(--space-md);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: var(--space-xs);
+        }
+
+        .view-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-sm);
+            color: var(--text-muted);
+        }
+
+        .view-btn.active {
+            background: var(--primary);
+            color: var(--text-light);
+        }
+
+        @media (max-width: 1024px) {
+            .products-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="top-bar-contact">
+                <a href="tel:+201234567890"><i class="fas fa-phone"></i> +20 123 456 7890</a>
+                <a href="mailto:info@modernstore.com"><i class="fas fa-envelope"></i> info@modernstore.com</a>
+            </div>
+            <div class="top-bar-actions">
+                <button id="themeToggle" aria-label="تبديل الوضع">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <span><i class="fas fa-truck"></i> شحن مجاني للطلبات فوق 500 ج.م</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🛒</span>
+                <span class="logo-text">المتجر</span>
+            </a>
+
+            <nav class="nav" id="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">الرئيسية</a></li>
+                    <li class="nav-dropdown">
+                        <a href="products.html" class="nav-link">
+                            الأقسام <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="nav-dropdown-menu">
+                            <a href="products.html?category=food" class="dropdown-item">
+                                <i class="fas fa-utensils"></i> المواد الغذائية
+                            </a>
+                            <a href="products.html?category=consumer" class="dropdown-item">
+                                <i class="fas fa-spray-can"></i> المواد الاستهلاكية
+                            </a>
+                            <a href="products.html?category=clothes" class="dropdown-item">
+                                <i class="fas fa-tshirt"></i> ملابس جاهزة
+                            </a>
+                            <a href="products.html?category=watches" class="dropdown-item">
+                                <i class="fas fa-clock"></i> ساعات واكسسوارات
+                            </a>
+                            <a href="products.html?category=appliances" class="dropdown-item">
+                                <i class="fas fa-blender"></i> الأجهزة الكهربائية
+                            </a>
+                            <a href="products.html?category=mobiles" class="dropdown-item">
+                                <i class="fas fa-mobile-alt"></i> الموبايلات واللابات
+                            </a>
+                        </div>
+                    </li>
+                    <li><a href="products.html" class="nav-link active">جميع المنتجات</a></li>
+                    <li><a href="offers.html" class="nav-link">العروض</a></li>
+                    <li><a href="about.html" class="nav-link">من نحن</a></li>
+                    <li><a href="contact.html" class="nav-link">اتصل بنا</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button class="search-toggle" id="searchToggle" aria-label="بحث">
+                    <i class="fas fa-search"></i>
+                </button>
+                <a href="wishlist.html" class="cart-btn" aria-label="المفضلة" data-tooltip="المفضلة">
+                    <i class="fas fa-heart"></i>
+                    <span class="cart-count" id="wishlistCount">0</span>
+                </a>
+                <a href="compare.html" class="cart-btn" aria-label="المقارنة" data-tooltip="المقارنة">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span class="cart-count" id="compareCount">0</span>
+                </a>
+                <button class="cart-btn" id="cartBtn" aria-label="سلة التسوق">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="menu-toggle" id="menuToggle" aria-label="القائمة">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title" id="pageTitle">جميع المنتجات</h1>
+            <div class="breadcrumb">
+                <a href="index.html">الرئيسية</a>
+                <span>/</span>
+                <span id="breadcrumbCurrent">جميع المنتجات</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <div class="products-layout">
+                <!-- Sidebar Filters -->
+                <aside class="sidebar">
+                    <div class="filter-card">
+                        <h3 class="filter-title"><i class="fas fa-th-large"></i> الأقسام</h3>
+                        <div class="filter-list" id="categoryFilters">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    <div class="filter-card">
+                        <h3 class="filter-title"><i class="fas fa-tag"></i> السعر</h3>
+                        <div class="filter-list">
+                            <label class="filter-item">
+                                <input type="checkbox" name="price" value="0-100">
+                                <span>أقل من 100 ج.م</span>
+                            </label>
+                            <label class="filter-item">
+                                <input type="checkbox" name="price" value="100-500">
+                                <span>100 - 500 ج.م</span>
+                            </label>
+                            <label class="filter-item">
+                                <input type="checkbox" name="price" value="500-1000">
+                                <span>500 - 1000 ج.م</span>
+                            </label>
+                            <label class="filter-item">
+                                <input type="checkbox" name="price" value="1000+">
+                                <span>أكثر من 1000 ج.م</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="filter-card">
+                        <h3 class="filter-title"><i class="fas fa-percent"></i> العروض</h3>
+                        <div class="filter-list">
+                            <label class="filter-item">
+                                <input type="checkbox" name="discount" value="sale">
+                                <span>منتجات مخفضة</span>
+                            </label>
+                            <label class="filter-item">
+                                <input type="checkbox" name="discount" value="new">
+                                <span>منتجات جديدة</span>
+                            </label>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Products Grid -->
+                <div class="products-main">
+                    <div class="products-header">
+                        <p class="products-count">عرض <strong id="productsCount">0</strong> منتج</p>
+                        <div class="products-sort">
+                            <select class="sort-select" id="sortSelect">
+                                <option value="featured">الأكثر شهرة</option>
+                                <option value="price-asc">السعر: من الأقل للأعلى</option>
+                                <option value="price-desc">السعر: من الأعلى للأقل</option>
+                                <option value="rating">الأعلى تقييماً</option>
+                                <option value="newest">الأحدث</option>
+                            </select>
+                            <div class="view-toggle">
+                                <button class="view-btn active" data-view="grid"><i class="fas fa-th"></i></button>
+                                <button class="view-btn" data-view="list"><i class="fas fa-list"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="products-grid" id="productsGrid">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-icon">🛒</span>
+                        <span class="logo-text">المتجر</span>
+                    </a>
+                    <p>متجرك الإلكتروني الأول للتسوق بأفضل الأسعار وأعلى جودة. نوفر لك كل ما تحتاجه في مكان واحد.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="products.html">جميع المنتجات</a></li>
+                        <li><a href="offers.html">العروض</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>الأقسام</h4>
+                    <ul>
+                        <li><a href="products.html?category=food">المواد الغذائية</a></li>
+                        <li><a href="products.html?category=consumer">المواد الاستهلاكية</a></li>
+                        <li><a href="products.html?category=clothes">ملابس جاهزة</a></li>
+                        <li><a href="products.html?category=watches">ساعات واكسسوارات</a></li>
+                        <li><a href="products.html?category=appliances">الأجهزة الكهربائية</a></li>
+                        <li><a href="products.html?category=mobiles">الموبايلات واللابات</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links footer-contact">
+                    <h4>تواصل معنا</h4>
+                    <ul>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>مصر - القاهرة - مدينة نصر</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+201234567890">+20 123 456 7890</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@modernstore.com">info@modernstore.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 المتجر الحديث. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-drawer-header">
+            <h3><i class="fas fa-shopping-bag"></i> سلة التسوق</h3>
+            <button class="cart-close" id="cartClose"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-drawer-body" id="cartItems"></div>
+        <div class="cart-drawer-footer">
+            <div class="cart-total">
+                <span>الإجمالي:</span>
+                <span id="cartTotal">0 ج.م</span>
+            </div>
+            <a href="cart.html" class="btn btn-primary btn-block">عرض السلة</a>
+            <a href="checkout.html" class="btn btn-secondary btn-block" style="margin-top: 10px;">إتمام الشراء</a>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <button class="search-close" id="searchClose"><i class="fas fa-times"></i></button>
+        <div class="search-container">
+            <form class="search-form">
+                <input type="text" id="searchInput" placeholder="ابحث عن منتج...">
+            </form>
+        </div>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="العودة للأعلى">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        // Products Page Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const categoryId = params.get('category');
+            const searchQuery = params.get('search');
+
+            // Populate category filters
+            const categoryFilters = document.getElementById('categoryFilters');
+            if (categoryFilters) {
+                categoryFilters.innerHTML = `
+                    <label class="filter-item ${!categoryId ? 'active' : ''}">
+                        <input type="radio" name="category" value="" ${!categoryId ? 'checked' : ''}>
+                        <span>جميع الأقسام</span>
+                        <span class="filter-count">${PRODUCTS.length}</span>
+                    </label>
+                    ${CATEGORIES.map(cat => `
+                        <label class="filter-item ${categoryId === cat.id ? 'active' : ''}">
+                            <input type="radio" name="category" value="${cat.id}" ${categoryId === cat.id ? 'checked' : ''}>
+                            <span>${cat.icon} ${cat.name}</span>
+                            <span class="filter-count">${getProductsByCategory(cat.id).length}</span>
+                        </label>
+                    `).join('')}
+                `;
+
+                // Filter change handler
+                categoryFilters.querySelectorAll('input').forEach(input => {
+                    input.addEventListener('change', () => {
+                        const val = input.value;
+                        window.location.href = val ? `products.html?category=${val}` : 'products.html';
+                    });
+                });
+            }
+
+            // Filter products
+            let filteredProducts = PRODUCTS;
+
+            if (categoryId) {
+                filteredProducts = getProductsByCategory(categoryId);
+                const category = getCategoryById(categoryId);
+                if (category) {
+                    document.getElementById('pageTitle').textContent = category.name;
+                    document.getElementById('breadcrumbCurrent').textContent = category.name;
+                }
+            }
+
+            if (searchQuery) {
+                filteredProducts = PRODUCTS.filter(p =>
+                    p.name.toLowerCase().includes(searchQuery.toLowerCase())
+                );
+                document.getElementById('pageTitle').textContent = `نتائج البحث: "${searchQuery}"`;
+            }
+
+            // Render products
+            const productsGrid = document.getElementById('productsGrid');
+            const productsCount = document.getElementById('productsCount');
+
+            if (productsGrid) {
+                productsGrid.innerHTML = filteredProducts.map(product =>
+                    createProductCard(product)
+                ).join('');
+            }
+
+            if (productsCount) {
+                productsCount.textContent = filteredProducts.length;
+            }
+
+            // Sort functionality
+            const sortSelect = document.getElementById('sortSelect');
+            if (sortSelect) {
+                sortSelect.addEventListener('change', () => {
+                    const sortValue = sortSelect.value;
+                    let sorted = [...filteredProducts];
+
+                    switch (sortValue) {
+                        case 'price-asc':
+                            sorted.sort((a, b) => a.price - b.price);
+                            break;
+                        case 'price-desc':
+                            sorted.sort((a, b) => b.price - a.price);
+                            break;
+                        case 'rating':
+                            sorted.sort((a, b) => b.rating - a.rating);
+                            break;
+                        case 'newest':
+                            sorted.sort((a, b) => b.id - a.id);
+                            break;
+                    }
+
+                    productsGrid.innerHTML = sorted.map(product =>
+                        createProductCard(product)
+                    ).join('');
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
