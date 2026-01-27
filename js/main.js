@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initProducts();
     initPromos();
     initWishlistCompare();
+    initPreloader();
 });
 
 // ================================================
@@ -75,44 +76,63 @@ function updateThemeIcon() {
 }
 
 // ================================================
-// SEARCH
+// SEARCH (Updated Logic)
 // ================================================
 
 function initSearch() {
-    const searchToggle = document.getElementById('searchToggle');
     const searchOverlay = document.getElementById('searchOverlay');
     const searchClose = document.getElementById('searchClose');
+    const searchForm = document.querySelector('.search-form'); // Fixed: Select by class
     const searchInput = document.getElementById('searchInput');
 
-    if (searchToggle && searchOverlay) {
-        searchToggle.addEventListener('click', () => {
-            searchOverlay.classList.add('active');
-            setTimeout(() => searchInput?.focus(), 300);
-        });
+    if (!searchOverlay) return;
+
+    // Toggle Search
+    function toggleSearch(e) {
+        if (e) e.preventDefault();
+        searchOverlay.classList.toggle('active');
+        if (searchOverlay.classList.contains('active')) {
+            setTimeout(() => searchInput.focus(), 100);
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
     }
 
-    if (searchClose) {
-        searchClose.addEventListener('click', () => {
-            searchOverlay?.classList.remove('active');
-        });
-    }
+    // Add event listener to all search toggle buttons (desktop and mobile)
+    // Looking for buttons with search icon or aria-label="بحث"
+    const searchButtons = document.querySelectorAll('button i.fa-search');
+    searchButtons.forEach(icon => {
+        const btn = icon.closest('button');
+        if (btn) btn.addEventListener('click', toggleSearch);
+    });
 
-    if (searchOverlay) {
-        searchOverlay.addEventListener('click', (e) => {
-            if (e.target === searchOverlay) {
-                searchOverlay.classList.remove('active');
-            }
-        });
-    }
+    // Also try to find by ID if the icon selector misses button
+    const searchToggle = document.getElementById('searchToggle');
+    if (searchToggle) searchToggle.addEventListener('click', toggleSearch);
 
-    // Search on Enter
-    if (searchInput) {
-        searchInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                const query = searchInput.value.trim();
-                if (query) {
-                    window.location.href = `products.html?search=${encodeURIComponent(query)}`;
-                }
+    if (searchClose) searchClose.addEventListener('click', toggleSearch);
+
+    // Close on background click
+    searchOverlay.addEventListener('click', (e) => {
+        if (e.target === searchOverlay) toggleSearch();
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+            toggleSearch();
+        }
+    });
+
+    // Handle Form Submission
+    if (searchForm) {
+        searchForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const query = searchInput.value.trim();
+            if (query) {
+                // Redirect to products page with search query
+                window.location.href = `products.html?search=${encodeURIComponent(query)}`;
             }
         });
     }
