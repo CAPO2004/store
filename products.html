@@ -640,13 +640,21 @@
             // Update URL without reload
             function updateURL() {
                 const url = new URL(window.location);
+
+                // Persist Category
                 if (state.category) {
                     url.searchParams.set('category', state.category);
                 } else {
                     url.searchParams.delete('category');
                 }
 
-                // We could also store other filters in URL if needed, but keeping it simple for now
+                // Persist Search
+                if (state.search) {
+                    url.searchParams.set('search', state.search);
+                } else {
+                    url.searchParams.delete('search');
+                }
+
                 window.history.pushState({}, '', url);
             }
 
@@ -657,7 +665,19 @@
                     if (state.category && product.category !== state.category) return false;
 
                     // 2. Search
-                    if (state.search && !product.name.toLowerCase().includes(state.search.toLowerCase())) return false;
+                    if (state.search) {
+                        const query = state.search.toLowerCase();
+                        const matchesName = product.name.toLowerCase().includes(query);
+
+                        // Find category name to search in it too
+                        const category = CATEGORIES.find(c => c.id === product.category);
+                        const matchesCategory = category && (
+                            category.name.toLowerCase().includes(query) ||
+                            category.nameEn.toLowerCase().includes(query)
+                        );
+
+                        if (!matchesName && !matchesCategory) return false;
+                    }
 
                     // 3. Price (OR logic)
                     if (state.prices.length > 0) {
