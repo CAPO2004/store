@@ -805,12 +805,14 @@ function updateWishlistButtonState(productId) {
     });
 }
 
-// Compare functions (stub for now to avoid errors)
+// Compare functions
 function updateCompareCount() {
-    // Implementation for compare count
-    const compare = JSON.parse(localStorage.getItem('compare')) || [];
+    const compareList = JSON.parse(localStorage.getItem('compareList')) || [];
     const countEl = document.getElementById('compareCount');
-    if (countEl) countEl.textContent = compare.length;
+    if (countEl) {
+        countEl.textContent = compareList.length;
+        countEl.style.display = compareList.length > 0 ? 'flex' : 'none';
+    }
 }
 
 // Page entrance animations are now handled purely by CSS
