@@ -187,10 +187,101 @@
             .offer-banner {
                 grid-template-columns: 1fr;
                 text-align: center;
+                padding: var(--space-lg);
+            }
+
+            .offer-banner h2 {
+                font-size: 1.5rem;
+            }
+
+            .offer-discount {
+                font-size: 2.5rem;
             }
 
             .countdown {
                 flex-wrap: wrap;
+                gap: var(--space-sm);
+            }
+
+            .countdown-item {
+                min-width: 60px;
+                padding: var(--space-md);
+            }
+
+            .countdown-number {
+                font-size: 1.75rem;
+            }
+
+            .countdown-label {
+                font-size: 0.75rem;
+            }
+
+            .offers-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-md);
+            }
+
+            .offer-card-image {
+                height: 140px;
+            }
+
+            .offer-card-content {
+                padding: var(--space-md);
+            }
+
+            .offer-card h3 {
+                font-size: 0.95rem;
+                line-height: 1.3;
+            }
+
+            .offer-card-prices {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+
+            .offer-new-price {
+                font-size: 1.1rem;
+            }
+
+            .offer-old-price {
+                font-size: 0.85rem;
+            }
+
+            .offer-card .btn {
+                padding: var(--space-sm) var(--space-md);
+                font-size: 0.85rem;
+            }
+
+            .offers-hero {
+                padding: var(--space-xl) 0;
+            }
+
+            .offers-hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .offers-hero p {
+                font-size: 1rem;
+            }
+
+            .offers-section {
+                padding: var(--space-xl) 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .offers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .countdown-item {
+                min-width: 50px;
+                padding: var(--space-sm);
+            }
+
+            .countdown-number {
+                font-size: 1.5rem;
             }
         }
     </style>
