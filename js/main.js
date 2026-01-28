@@ -41,14 +41,14 @@ function initHeader() {
 
 function initTheme() {
     const themeToggle = document.getElementById('themeToggle');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const savedTheme = localStorage.getItem('theme');
 
-    // Set initial theme
+    // Set initial theme - Light mode is default
     if (savedTheme) {
         document.documentElement.setAttribute('data-theme', savedTheme);
-    } else if (prefersDark) {
-        document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+        // Default to light mode (no action needed as light is the base)
+        document.documentElement.setAttribute('data-theme', 'light');
     }
 
     updateThemeIcon();
