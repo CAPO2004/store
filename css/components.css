@@ -1754,8 +1754,23 @@
         padding: var(--space-xs) 0;
     }
 
+    .top-bar-content {
+        justify-content: center;
+        gap: var(--space-md);
+    }
+
+    .top-bar-contact {
+        gap: var(--space-md);
+    }
+
+    .top-bar-contact a span {
+        display: none;
+        /* Hide text, show icons only */
+    }
+
     .top-bar-actions span {
         display: none;
+        /* Hide free shipping text */
     }
 
     /* Preloader */
