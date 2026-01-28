@@ -272,7 +272,38 @@
 
         @media (max-width: 480px) {
             .offers-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .offer-card-image {
+                height: 100px;
+            }
+
+            .offer-card-content {
+                padding: var(--space-sm);
+            }
+
+            .offer-card h3 {
+                font-size: 0.8rem;
+            }
+
+            .offer-new-price {
+                font-size: 0.95rem;
+            }
+
+            .offer-old-price {
+                font-size: 0.75rem;
+            }
+
+            .offer-card .btn {
+                padding: 6px 10px;
+                font-size: 0.75rem;
+            }
+
+            .offer-card-badge {
+                font-size: 0.7rem;
+                padding: 4px 8px;
             }
 
             .countdown-item {
