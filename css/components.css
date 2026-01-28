@@ -1763,9 +1763,14 @@
         gap: var(--space-md);
     }
 
-    .top-bar-contact a span {
-        display: none;
-        /* Hide text, show icons only */
+    .top-bar-contact a {
+        font-size: 0;
+        /* Hide text */
+    }
+
+    .top-bar-contact a i {
+        font-size: 1rem;
+        /* Show icons at normal size */
     }
 
     .top-bar-actions span {
