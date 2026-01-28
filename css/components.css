@@ -1317,22 +1317,31 @@
 
 @media (max-width: 768px) {
     .top-bar-contact {
-        display: none;
+        gap: var(--space-md);
+    }
+
+    .top-bar-contact a {
+        font-size: 0;
+        /* Hide text */
+    }
+
+    .top-bar-contact a i {
+        font-size: 1rem;
+        /* Show icons */
+        color: var(--text-light);
     }
 
     .top-bar-content {
-        justify-content: center;
+        justify-content: space-between;
     }
 
     .top-bar-actions {
-        width: 100%;
-        justify-content: space-between;
         font-size: 0.8rem;
     }
 
     .top-bar-actions span {
-        display: block;
-        /* Ensure text is visible */
+        display: none;
+        /* Hide free shipping text on mobile */
     }
 
     .nav {
