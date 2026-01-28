@@ -1764,7 +1764,7 @@
     }
 
     .top-bar-content {
-        justify-content: center;
+        justify-content: space-between;
         gap: var(--space-md);
     }
 
