@@ -66,12 +66,12 @@ class Cart {
     }
 
     updateCartCount() {
-        const countElements = document.querySelectorAll('.cart-count');
+        const countEl = document.getElementById('cartCount');
         const count = this.getItemCount();
-        countElements.forEach(el => {
-            el.textContent = count;
-            el.style.display = count > 0 ? 'flex' : 'none';
-        });
+        if (countEl) {
+            countEl.textContent = count;
+            countEl.style.display = count > 0 ? 'flex' : 'none';
+        }
     }
 
     renderCartItems() {
