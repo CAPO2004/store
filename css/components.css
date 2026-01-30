@@ -1349,15 +1349,9 @@
         /* Hide free shipping text on mobile */
     }
 
-    /* Hide Login Button Text on Mobile */
+    /* Hide Login Button completely on Mobile (Moved to Menu) */
     .header-actions .btn-primary {
-        padding: 0.5rem;
-        font-size: 0;
-    }
-
-    .header-actions .btn-primary i {
-        font-size: 1rem;
-        margin: 0;
+        display: none !important;
     }
 
     .nav {
