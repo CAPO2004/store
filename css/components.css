@@ -129,6 +129,11 @@
     gap: var(--space-xs);
 }
 
+.mobile-login-item {
+    display: none;
+    /* Hidden on desktop */
+}
+
 .nav-link {
     padding: var(--space-sm) var(--space-lg);
     color: var(--text-secondary);
@@ -1478,6 +1483,20 @@
         flex-direction: column;
         width: 100%;
         gap: 8px;
+    }
+
+    .mobile-login-item {
+        display: block;
+        /* Show on mobile */
+        margin-top: 10px;
+        border-top: 1px solid var(--border-color);
+        padding-top: 10px;
+    }
+
+    .mobile-login-item .nav-link {
+        justify-content: center;
+        background: var(--primary);
+        color: #fff !important;
     }
 
     .nav-link {
