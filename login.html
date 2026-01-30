@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج تسجيل الدخول وإنشاء حساب</title>
+    <link rel="stylesheet" href="css/login-custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Back to Home Link added manually to match previous structure -->
+    <a href="index.html"
+        style="position: absolute; top: 20px; right: 20px; color: #4FA3FF; text-decoration: none; font-family: 'Cairo'; z-index: 200; font-weight: bold; display: flex; align-items: center; gap: 5px;">
+        <i class="fas fa-home"></i> الرئيسية
+    </a>
+
+    <div class="container">
+        <div class="curved-shape"></div>
+        <div class="curved-shape2"></div>
+        <div class="form-box Login">
+            <h2 class="animation" style="--D:0; --S:21">تسجيل الدخول</h2>
+            <form action="#">
+                <div class="input-box animation" style="--D:1; --S:22">
+                    <input type="text" required>
+                    <label for="">اسم المستخدم</label>
+                    <box-icon type='solid' name='user' color="gray"></box-icon>
+                </div>
+
+                <div class="input-box animation" style="--D:2; --S:23">
+                    <input type="password" required>
+                    <label for="">كلمة المرور</label>
+                    <box-icon name='lock-alt' type='solid' color="gray"></box-icon>
+                </div>
+
+                <div class="input-box animation" style="--D:3; --S:24">
+                    <button class="btn" type="submit">دخول</button>
+                </div>
+
+                <div class="social-container animation" style="--D:3; --S:24">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+
+                <div class="regi-link animation" style="--D:4; --S:25">
+                    <p>ليس لديك حساب؟ <br> <a href="#" class="SignUpLink">إنشاء حساب</a></p>
+                </div>
+            </form>
+        </div>
+
+        <div class="info-content Login">
+            <h2 class="animation" style="--D:0; --S:20">!مرحباً بعودتك</h2>
+            <p class="animation" style="--D:1; --S:21">نحن سعداء برؤيتك مجدداً. إذا احتجت أي شيء، نحن هنا للمساعدة.</p>
+        </div>
+
+        <div class="form-box Register">
+            <h2 class="animation" style="--li:17; --S:0">إنشاء حساب</h2>
+            <form action="#">
+                <div class="input-box animation" style="--li:18; --S:1">
+                    <input type="text" required>
+                    <label for="">اسم المستخدم</label>
+                    <box-icon type='solid' name='user' color="gray"></box-icon>
+                </div>
+
+                <div class="input-box animation" style="--li:19; --S:2">
+                    <input type="email" required>
+                    <label for="">البريد الإلكتروني</label>
+                    <box-icon name='envelope' type='solid' color="gray"></box-icon>
+                </div>
+
+                <div class="input-box animation" style="--li:19; --S:3">
+                    <input type="password" required>
+                    <label for="">كلمة المرور</label>
+                    <box-icon name='lock-alt' type='solid' color="gray"></box-icon>
+                </div>
+
+                <div class="input-box animation" style="--li:20; --S:4">
+                    <button class="btn" type="submit">تسجيل</button>
+                </div>
+
+                <div class="social-container animation" style="--li:20; --S:4">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+
+                <div class="regi-link animation" style="--li:21; --S:5">
+                    <p>لديك حساب بالفعل؟ <br> <a href="#" class="SignInLink">تسجيل الدخول</a></p>
+                </div>
+            </form>
+        </div>
+
+        <div class="info-content Register">
+            <h2 class="animation" style="--li:17; --S:0">!مرحباً بك</h2>
+            <p class="animation" style="--li:18; --S:1">سعداء بوجودك معنا. إذا احتجت أي مساعدة، لا تتردد في التواصل
+                معنا.</p>
+        </div>
+
+    </div>
+
+    <!-- Corrected Link to JS -->
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="js/login-custom.js"></script>
+
+</body>
+
+</html>
