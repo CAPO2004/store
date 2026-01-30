@@ -60,6 +60,13 @@ const headerHTML = `
                     <li><a href="offers.html" class="nav-link" data-page="offers">العروض</a></li>
                     <li><a href="about.html" class="nav-link" data-page="about">من نحن</a></li>
                     <li><a href="contact.html" class="nav-link" data-page="contact">اتصل بنا</a></li>
+                    
+                    <!-- Mobile-Only Login Button (Moved from Header) -->
+                    <li class="mobile-login-item">
+                        <a href="login.html" class="nav-link">
+                            <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
+                        </a>
+                    </li>
                 </ul>
             </nav>
 
