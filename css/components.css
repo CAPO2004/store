@@ -1344,6 +1344,17 @@
         /* Hide free shipping text on mobile */
     }
 
+    /* Hide Login Button Text on Mobile */
+    .header-actions .btn-primary {
+        padding: 0.5rem;
+        font-size: 0;
+    }
+
+    .header-actions .btn-primary i {
+        font-size: 1rem;
+        margin: 0;
+    }
+
     .nav {
         position: fixed;
         top: 0;
