@@ -3,62 +3,62 @@
    ================================================ */
 
 :root {
-    /* Primary Colors - Light Blue Theme (Light Mode) */
-    --primary: #3b82f6;
-    --primary-light: #60a5fa;
+    /* Primary Colors - Brighter Blue Theme */
+    --primary: #4FA3FF;
+    --primary-light: #7CBFFF;
     --primary-dark: #2563eb;
 
     /* Secondary Colors */
-    --secondary: #4f8ff7;
-    --secondary-light: #7db3ff;
+    --secondary: #7CBFFF;
+    --secondary-light: #E9F4FF;
     --secondary-dark: #2563eb;
 
-    /* Accent Colors - Gold */
-    --accent: #d4a855;
-    --accent-light: #e8c882;
-    --accent-dark: #b8923d;
+    /* Accent Colors - Bright Gold */
+    --accent: #F4B400;
+    --accent-light: #FFC83D;
+    --accent-dark: #E0A800;
 
     /* Status Colors */
     --success: #28a745;
     --success-light: #34d399;
     --danger: #dc3545;
     --danger-light: #f87171;
-    --warning: #f59e0b;
-    --info: #3b82f6;
+    --warning: #F59E0B;
+    --info: #4FA3FF;
 
     /* Category Colors */
     --cat-food: #28a745;
-    --cat-consumer: #3b82f6;
-    --cat-clothes: #d4a855;
-    --cat-watches: #e8c882;
+    --cat-consumer: #4FA3FF;
+    --cat-clothes: #F4B400;
+    --cat-watches: #FFC83D;
     --cat-appliances: #2563eb;
-    --cat-mobiles: #60a5fa;
+    --cat-mobiles: #7CBFFF;
 
     /* Background Colors */
     --bg-primary: #ffffff;
     --bg-secondary: #f0f7ff;
-    --bg-tertiary: #e0efff;
+    --bg-tertiary: #E9F4FF;
     --bg-card: #ffffff;
     --bg-glass: rgba(255, 255, 255, 0.9);
 
     /* Text Colors */
     --text-primary: #1e3a5f;
-    --text-secondary: #4a6fa5;
-    --text-muted: #7a9cc5;
+    --text-secondary: #555555;
+    --text-muted: #888888;
     --text-light: #ffffff;
 
     /* Border & Shadow */
-    --border-color: #d0e3ff;
+    --border-color: #E9F4FF;
     --border-light: rgba(255, 255, 255, 0.2);
-    --shadow-sm: 0 2px 4px rgba(59, 130, 246, 0.08);
-    --shadow-md: 0 4px 12px rgba(59, 130, 246, 0.12);
-    --shadow-lg: 0 8px 24px rgba(59, 130, 246, 0.15);
-    --shadow-xl: 0 20px 25px -5px rgba(59, 130, 246, 0.15);
-    --shadow-glow: 0 4px 20px rgba(212, 168, 85, 0.3);
+    --shadow-sm: 0 2px 4px rgba(79, 163, 255, 0.1);
+    --shadow-md: 0 4px 12px rgba(79, 163, 255, 0.15);
+    --shadow-lg: 0 8px 24px rgba(79, 163, 255, 0.15);
+    --shadow-xl: 0 20px 25px -5px rgba(79, 163, 255, 0.15);
+    --shadow-glow: 0 4px 20px rgba(244, 180, 0, 0.4);
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
-    --gradient-hero: linear-gradient(135deg, #3b82f6 0%, #60a5fa 40%, #d4a855 100%);
+    --gradient-primary: linear-gradient(135deg, #4FA3FF 0%, #2563eb 100%);
+    --gradient-hero: linear-gradient(135deg, #4FA3FF 0%, #7CBFFF 50%, #F4B400 100%);
     --gradient-card: linear-gradient(145deg, #ffffff 0%, #f0f7ff 100%);
     --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
 
