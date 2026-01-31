@@ -238,6 +238,78 @@
                 flex: 1;
             }
         }
+
+        /* Improved Mobile Responsive Logic */
+        @media (max-width: 768px) {
+
+            /* 1. Default Grid View: Force 2 Columns (Side-by-Side) */
+            .wishlist-grid:not(.list-view) {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-sm);
+            }
+
+            .wishlist-grid:not(.list-view) .wishlist-item-content {
+                padding: var(--space-sm);
+            }
+
+            .wishlist-grid:not(.list-view) .wishlist-item h3 {
+                font-size: 0.9rem;
+                height: 2.4em;
+                /* Limit height for uniform rows */
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+            }
+
+            .wishlist-grid:not(.list-view) .wishlist-item-price {
+                font-size: 1rem;
+                margin-bottom: var(--space-sm);
+            }
+
+            /* Stack buttons in Grid View for space */
+            .wishlist-grid:not(.list-view) .wishlist-item-actions {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .wishlist-grid:not(.list-view) .wishlist-item-actions .btn {
+                width: 100%;
+                font-size: 0.8rem;
+                padding: 0.4rem;
+            }
+
+            /* 2. List View: Force 1 Column (Stacked) */
+            .wishlist-grid.list-view {
+                grid-template-columns: 1fr;
+            }
+
+            .wishlist-grid.list-view .wishlist-item {
+                flex-direction: column;
+            }
+
+            .wishlist-grid.list-view .wishlist-item-image {
+                width: 100%;
+                height: 200px;
+            }
+
+            .wishlist-grid.list-view .wishlist-item-content {
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-md);
+            }
+
+            .wishlist-grid.list-view .wishlist-item-actions {
+                flex-direction: row;
+                width: 100%;
+                gap: var(--space-sm);
+            }
+
+            .wishlist-grid.list-view .wishlist-item-actions .btn {
+                flex: 1;
+            }
+        }
     </style>
 </head>
 
