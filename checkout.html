@@ -371,6 +371,44 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        @media (max-width: 768px) {
+            .checkout-steps {
+                margin-bottom: var(--space-xl);
+            }
+
+            .step {
+                padding: var(--space-sm);
+                flex-direction: column;
+                gap: 5px;
+                text-align: center;
+            }
+
+            .step span:last-child {
+                font-size: 0.75rem;
+            }
+
+            .step-line {
+                width: 20px;
+            }
+
+            /* Compact Header Actions on Mobile */
+            .header-actions .btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
+            }
+
+            /* Fix container padding if needed */
+            .container {
+                padding-left: var(--space-md);
+                padding-right: var(--space-md);
+            }
+
+            /* Ensure no horizontal scroll */
+            .checkout-section {
+                overflow-x: hidden;
+            }
+        }
     </style>
 </head>
 
