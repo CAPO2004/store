@@ -120,9 +120,123 @@
             color: var(--danger);
         }
 
-        .btn-remove:hover {
-            background: var(--danger);
+        /* View Toggle Controls */
+        .wishlist-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-lg);
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: 5px;
+            background: var(--bg-card);
+            padding: 5px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .view-btn {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-sm);
+            color: var(--text-secondary);
+            transition: var(--transition-fast);
+            cursor: pointer;
+            background: transparent;
+            border: none;
+        }
+
+        .view-btn.active {
+            background: var(--primary);
             color: white;
+        }
+
+        .view-btn:hover:not(.active) {
+            background: var(--bg-secondary);
+            color: var(--primary);
+        }
+
+        /* List View Styles */
+        .wishlist-grid.list-view {
+            grid-template-columns: 1fr;
+            gap: var(--space-lg);
+        }
+
+        .wishlist-grid.list-view .wishlist-item {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .wishlist-grid.list-view .wishlist-item-image {
+            width: 200px;
+            height: 200px;
+            flex-shrink: 0;
+        }
+
+        .wishlist-grid.list-view .wishlist-item-content {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-xl);
+            text-align: right;
+            gap: var(--space-lg);
+        }
+
+        .wishlist-grid.list-view .wishlist-item h3 {
+            margin-bottom: 0;
+            font-size: 1.25rem;
+            flex: 1;
+        }
+
+        .wishlist-grid.list-view .wishlist-item-price {
+            margin-bottom: 0;
+            min-width: 100px;
+        }
+
+        .wishlist-grid.list-view .wishlist-item-actions {
+            flex-direction: row;
+            width: auto;
+            gap: var(--space-md);
+        }
+
+        .wishlist-grid.list-view .wishlist-item-actions .btn {
+            flex: unset;
+            padding: 0.5rem 1rem;
+        }
+
+        /* Mobile Responsive for List View */
+        @media (max-width: 768px) {
+            .wishlist-grid.list-view .wishlist-item {
+                flex-direction: column;
+            }
+
+            .wishlist-grid.list-view .wishlist-item-image {
+                width: 100%;
+                height: 200px;
+            }
+
+            .wishlist-grid.list-view .wishlist-item-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-md);
+                width: 100%;
+            }
+
+            .wishlist-grid.list-view .wishlist-item-actions {
+                width: 100%;
+            }
+
+            .wishlist-grid.list-view .wishlist-item-actions .btn {
+                flex: 1;
+            }
         }
     </style>
 </head>
@@ -249,6 +363,19 @@
     <!-- Wishlist Section -->
     <section class="wishlist-section">
         <div class="container">
+            <!-- View Controls -->
+            <div class="wishlist-header" id="wishlistHeader" style="display: none;">
+                <p class="wishlist-count-text">لديك <strong id="wishlistItemsCount">0</strong> منتجات في المفضلة</p>
+                <div class="view-toggle">
+                    <button class="view-btn active" onclick="setWishlistView('grid')" aria-label="عرض شبكي">
+                        <i class="fas fa-th"></i>
+                    </button>
+                    <button class="view-btn" onclick="setWishlistView('list')" aria-label="عرض قائمة">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+            </div>
+
             <div id="wishlistContainer">
                 <!-- Will be populated by JavaScript -->
             </div>
@@ -356,16 +483,39 @@
     <script src="js/main.js"></script>
 
     <script>
+        let currentView = 'grid';
+
         document.addEventListener('DOMContentLoaded', () => {
             loadWishlist();
             updateCounts();
         });
 
+        function setWishlistView(view) {
+            currentView = view;
+
+            // Update buttons
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                if (view === 'grid' && btn.querySelector('.fa-th')) btn.classList.add('active');
+                else if (view === 'list' && btn.querySelector('.fa-list')) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+
+            // Update grid
+            const grid = document.querySelector('.wishlist-grid');
+            if (grid) {
+                if (view === 'list') grid.classList.add('list-view');
+                else grid.classList.remove('list-view');
+            }
+        }
+
         function loadWishlist() {
             const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
             const container = document.getElementById('wishlistContainer');
+            const header = document.getElementById('wishlistHeader');
+            const itemsCount = document.getElementById('wishlistItemsCount');
 
             if (wishlist.length === 0) {
+                if (header) header.style.display = 'none';
                 container.innerHTML = `
                     <div class="empty-state">
                         <i class="far fa-heart"></i>
@@ -379,8 +529,11 @@
                 return;
             }
 
+            if (header) header.style.display = 'flex';
+            if (itemsCount) itemsCount.textContent = wishlist.length;
+
             container.innerHTML = `
-                <div class="wishlist-grid">
+                <div class="wishlist-grid ${currentView === 'list' ? 'list-view' : ''}">
                     ${wishlist.map(id => {
                 const product = getProductById(id);
                 if (!product) return '';
