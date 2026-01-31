@@ -1401,7 +1401,9 @@
     }
 
     .hero {
-        padding: var(--space-2xl) 0;
+        padding-top: var(--space-2xl);
+        padding-bottom: 8rem;
+        /* Ensure space for the 100px wave */
         min-height: auto;
     }
 
